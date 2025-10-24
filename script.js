@@ -1,4 +1,4 @@
-        // === FUNGSI PENYEDERHANAAN (SOP) ===
+    // === FUNGSI PENYEDERHANAAN (SOP) ===
         function simplifyToSOP(vars, table) {
         const terms = [];
         for (let i = 0; i < table.length; i++) {
@@ -74,6 +74,12 @@
         }
 
         resultDiv.textContent = output;
+        });
+
+        // ===== JS BARU UNTUK RESET HASIL BENCHMARK =====
+        document.getElementById("btn-benchmark-reset")?.addEventListener("click", () => {
+        const resultDiv = document.getElementById("bench-result");
+        resultDiv.textContent = ""; // bersihkan hasil benchmark
         });
 
         // ===== UPDATE K-MAP OTOMATIS DARI EKSPRESI =====
