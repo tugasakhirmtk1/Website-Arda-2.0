@@ -10,12 +10,11 @@
 </head>
 <body>
   <header class="header-wrapper">
-  <div>
-    <h1>Simulator Aljabar Boolean & Karnaugh Map</h1>
-    <div class="sub">Interaktif — Evaluasi, Tabel Kebenaran, K-Map (1–4 var), Penyederhanaan SOP</div>
-  </div>
-</header>
-
+    <div>
+      <h1>Simulator Aljabar Boolean & Karnaugh Map</h1>
+      <div class="sub">Interaktif — Evaluasi, Tabel Kebenaran, K-Map (1–4 var), Penyederhanaan SOP</div>
+    </div>
+  </header>
 
   <main class="container">
     <!-- LEFT -->
@@ -25,7 +24,7 @@
           <label for="expr">Ekspresi Boolean</label>
           <input id="expr" type="text" placeholder="Contoh: A'B + AC  atau  ~(A+B)*C  atau  A ^ B'">
 
-          <!-- 🔽 Hasil pindah ke bawah input -->
+          <!-- Hasil pindah ke bawah input -->
           <div class="col" style="margin-top:10px">
             <span id="vars-pill" class="pill">Variabel: —</span>
             <span id="minterms-pill" class="pill">Minterm: —</span>
@@ -35,8 +34,10 @@
 
         <!-- Tombol kanan -->
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <button id="btn-eval" class="btn" style="min-width:120px; padding:6px 16px;" title="Hitung tabel kebenaran dan K-Map dari ekspresi Boolean.">Evaluasi</button>
-          <button id="btn-clear" class="btn secondary" style="min-width:120px; padding:6px 16px;" title="Hapus ekspresi Boolean dan kosongkan tabel serta K-Map.">Bersihkan</button>
+          <button id="btn-eval" class="btn" style="min-width:120px; padding:6px 16px;" 
+                  title="Hitung tabel kebenaran dan K-Map dari ekspresi Boolean.">Evaluasi</button>
+          <button id="btn-clear" class="btn secondary" style="min-width:120px; padding:6px 16px;" 
+                  title="Hapus ekspresi Boolean dan kosongkan tabel serta K-Map.">Bersihkan</button>
         </div>
       </div>
 
@@ -49,7 +50,7 @@
 
       <div class="sep"></div>
 
-      <!-- 🔸 BARIS CATATAN & CONTOH -->
+      <!-- Catatan & Contoh -->
       <div class="footer-panels">
         <div class="card" style="padding:12px; flex:1">
           <div class="mini muted">Catatan & Validasi</div>
@@ -75,47 +76,38 @@
           </select>
         </div>
       </div>
-        <!-- 🔹 BARIS BENCHMARK (TERPISAH) -->
+
+      <!-- Benchmark -->
       <div class="footer-panels" style="margin-top:10px; display:flex; gap:10px; align-items:flex-start;">
-        
-        <!-- 🔸 KIRI: Informasi & Tombol Benchmark -->
+        <!-- KIRI: Informasi & Tombol Benchmark -->
         <div class="card" style="padding:12px; flex:1; height:auto;">
           <div class="mini muted" style="font-weight:600;">Benchmark Quine–McCluskey (QM)</div>
           <p class="muted" style="font-size:13px; margin:8px 0 12px;">
             Uji waktu eksekusi algoritma QM dengan set minterm acak (3–6 variabel).
           </p>
-          <button id="btn-benchmark" class="btn secondary"
-            style="min-width:130px; padding:6px 16px;"
-            title="Uji kecepatan algoritma Quine–McCluskey.">
+          <button id="btn-benchmark" class="btn warning"
+                  style="min-width:130px; padding:6px 16px;"
+                  title="Uji kecepatan algoritma Quine–McCluskey.">
             Jalankan Benchmark
+          </button>
+          <button id="btn-benchmark-reset" class="btn secondary"
+                  style="min-width:130px; padding:6px 16px; margin-top:8px;"
+                  title="Reset hasil benchmark.">
+            Bersihkan Hasil
           </button>
         </div>
 
-        <!-- 🔸 KANAN: Hasil Benchmark -->
+        <!-- KANAN: Hasil Benchmark -->
         <div class="card" style="padding:12px; flex:1;">
           <div class="mini muted" style="font-weight:600;">Hasil Benchmark</div>
           <pre id="bench-result"
-          style="font-family:monospace;
-          background:var(--panel);
-          padding:8px 10px;
-          border-radius:8px;
-          white-space:pre-wrap;
-          word-wrap:break-word;
-          overflow:hidden;          /* 🔹 Tidak ada scroll */
-          font-size:13px; color:var(--muted);
-          margin-top:10px;
-          line-height:1.5;
-          min-height:60px;          /* 🔹 Biar tetap rapi */
-          ">         <!-- 🔹 Batas tinggi supaya tetap rapi -->
-          📊 Belum dijalankan.
+               style="font-family:monospace; background:var(--panel); padding:8px 10px;
+                      border-radius:8px; white-space:pre-wrap; word-wrap:break-word;
+                      overflow:hidden; font-size:13px; color:var(--muted);
+                      margin-top:10px; line-height:1.5; min-height:60px;">
+📊 Belum dijalankan.
           </pre>
-
-
         </div>
-      </div>
-
-
-
       </div>
     </section>
 
@@ -133,16 +125,15 @@
 
       <div style="margin-top:10px">
         <label for="minterm-io" style="font-size:13px;color:var(--muted);display:block;margin-bottom:4px;">
-            Impor / Ekspor Minterm (pisah koma). Contoh: 0,1,2,5 atau d2,4,7
+          Impor / Ekspor Minterm (pisah koma). Contoh: 0,1,2,5 atau d2,4,7
         </label>
         <input id="minterm-io" placeholder="contoh: 0,1,2,5 atau d2,4,7" />
-        </div>
+      </div>
 
-        <div class="controls" style="margin-top:8px">
-          <button id="btn-import" class="btn secondary" title="Masukkan daftar minterm (dan d untuk don't-care) ke dalam K-Map.">Impor → K-Map</button>
-          <button id="btn-export" class="btn secondary" title="Ambil daftar minterm dari K-Map dalam format teks.">Ekspor dari K-Map</button>
-          <button class="btn secondary" id="exportImgBtn" title="Simpan tampilan K-Map sebagai gambar PNG.">Ekspor Gambar (PNG)</button>
-        </div>
+      <div class="controls" style="margin-top:8px">
+        <button id="btn-import" class="btn secondary" title="Masukkan daftar minterm (dan d untuk don't-care) ke dalam K-Map.">Impor → K-Map</button>
+        <button id="btn-export" class="btn secondary" title="Ambil daftar minterm dari K-Map dalam format teks.">Ekspor dari K-Map</button>
+        <button class="btn secondary" id="exportImgBtn" title="Simpan tampilan K-Map sebagai gambar PNG.">Ekspor Gambar (PNG)</button>
       </div>
 
       <div class="sep"></div>
@@ -158,31 +149,25 @@
         </div>
       </div>
 
-        <div class="kmap-container">
-            <canvas id="kmapOverlay"></canvas>
-            <div id="kmapWrap" style="min-height:140px;min-width:140px;color:#ccc">
-                K-Map akan muncul di sini.
-            </div>
-            </div>
+      <div class="kmap-container">
+        <canvas id="kmapOverlay"></canvas>
+        <div id="kmapWrap" style="min-height:140px;min-width:140px;color:#ccc">K-Map akan muncul di sini.</div>
+      </div>
 
-            <div class="sep"></div> 
+      <div class="sep"></div>
 
-            <div class="right-help">
-            <strong>Petunjuk singkat:</strong>
-            <ul style="margin:6px 0 0 18px">
-                <li>Masukkan ekspresi, klik <b>Evaluasi</b> untuk tabel & K-Map.</li>
-                <li>Jika variabel >4, K-Map dinonaktifkan tetapi tabel tetap tampil.</li>
-                <li>Impor minterm akan mengisi K-Map; ekspor menghasilkan string minterm.</li>
-            </ul>
-            </div>
-
+      <div class="right-help">
+        <strong>Petunjuk singkat:</strong>
+        <ul style="margin:6px 0 0 18px">
+          <li>Masukkan ekspresi, klik <b>Evaluasi</b> untuk tabel & K-Map.</li>
+          <li>Jika variabel >4, K-Map dinonaktifkan tetapi tabel tetap tampil.</li>
+          <li>Impor minterm akan mengisi K-Map; ekspor menghasilkan string minterm.</li>
+        </ul>
+      </div>
     </aside>
   </main>
-  
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
 </body>
 </html>
-
